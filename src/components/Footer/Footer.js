@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row row row-cols-1 row-cols-sm-2 row-cols-md-4 py-2 my-2">
                         <div className="col mb-3">
-                            <Link className='d-flex align-items-center mb-2 link-dark text-decoration-none'><h5 className='m-0'>EMIKO</h5></Link>
+                            <h5 className='d-flex align-items-center mb-2'>EMIKO</h5>
                             <p>With a focus on customer service, the best visa consultancy firm out there.</p>
                             <p><FaMobileAlt /> +892 05869 525</p>
                         </div>
@@ -41,7 +41,6 @@ const Footer = () => {
                                 <li className='nav-item mb-2'><Link>Faqs</Link></li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -1,3 +1,7 @@
+.footer-top {
+    padding-top: 20px;
+}
+
 .footer-bottom {
     padding: 20px 0;
     background: var(--secondary-bg-color);

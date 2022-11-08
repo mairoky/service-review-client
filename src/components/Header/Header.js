@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <header className='py-3'>
             {['lg'].map((expand) => (
-                <Navbar key={expand} expand={expand} variant="dark">
+                <Navbar key={expand} expand={expand}>
                     <Container>
                         <Navbar.Brand as={Link} to="/">
                             EMIKO

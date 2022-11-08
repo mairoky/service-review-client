@@ -1,11 +1,16 @@
 import React from 'react';
+import HeroSlider from '../../components/HeroSlider/HeroSlider';
 import './Home.css';
 
 const Home = () => {
     return (
-        <div>
-            <h2>Home</h2>
-        </div>
+        <main>
+            <section className='hero-slider'>
+                <div className="container">
+                    <HeroSlider />
+                </div>
+            </section>
+        </main>
     );
 };
 
