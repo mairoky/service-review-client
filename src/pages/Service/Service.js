@@ -48,8 +48,8 @@ const Service = () => {
                     <div className='row'>
                         <div className="col-md-8 m-auto text-center">
                             {
-                                !user ?
-                                    <Link to="/login">Please login to add a Review</Link>
+                                !user?.uid ?
+                                    <Link to="/login"><h5 className='m-0'>Please login to add a Review</h5></Link>
                                     : <>
                                         <form onSubmit={handleAddReview}>
                                             <div className="card-body">
