@@ -7,7 +7,7 @@ const Services = () => {
     const services = useLoaderData();
     console.log(services);
     return (
-        <section className="services my-5">
+        <section className="services my-3">
             <div className="container">
                 <div className="row g-3">
                     {
