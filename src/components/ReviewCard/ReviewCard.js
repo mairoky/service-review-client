@@ -5,13 +5,13 @@ import './ReviewCard.css';
 const ReviewCard = () => {
     return (
         <div className='col-lg-6 col-md-6 col-12'>
-            <div className="review-item">
+            <div className="review-item bg-white rounded p-3">
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-6">
                         <h3>Best Support</h3>
                     </div>
                     <div className="col-lg-6 col-md-6 col-6">
-                        <div className="stars text-center">
+                        <div className="stars text-end">
                             <FaStar />
                             <FaStar />
                             <FaStar />
@@ -29,7 +29,6 @@ const ReviewCard = () => {
                         <div className="col-lg-10 col-md-9 col-sm-9 col-9">
                             <div className="author-name-des">
                                 <p>Lorem Mark</p>
-                                <p>Email</p>
                             </div>
                         </div>
                     </div>

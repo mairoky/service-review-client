@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import ReviewCard from '../../components/ReviewCard/ReviewCard';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
 import './Service.css';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Service = () => {
     const service = useLoaderData();
+    const { user } = useContext(AuthContext);
     const { _id, name, image, price, rating, description } = service;
+
+    // Handle Add Review
+    const handleAddReview = e => {
+
+    }
 
     return (
         <div>
@@ -29,20 +39,44 @@ const Service = () => {
                                 <h3>Service Description: </h3>
                                 <p>{description}</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </section>
             <section className='service-review my-5'>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="d-flex justify-content-between">
-                                <h2>Users Review</h2>
-                                <Link><button className='btn btn-outline-dark'>Add Your Review</button></Link>
-                            </div>
+                    <div className='row'>
+                        <div className="col-md-8 m-auto text-center">
+                            {
+                                !user ?
+                                    <Link to="/login">Please login to add a Review</Link>
+                                    : <>
+                                        <form onSubmit={handleAddReview}>
+                                            <div className="card-body">
+                                                <div className="form-group mt-2">
+                                                    <FloatingLabel controlId="floatingTextarea2" label="Leave your review here">
+                                                        <Form.Control
+                                                            as="textarea"
+                                                            placeholder="Leave your review here"
+                                                            style={{ height: '100px' }}
+                                                        />
+                                                    </FloatingLabel>
+                                                </div>
+                                                <div className="text-end">
+                                                    <button type="submit" className="btn btn-dark mt-3">Add Your Review</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </>
+                            }
                         </div>
+                    </div>
+                    <h2 className='mt-4'>All Users Review</h2>
+                    <div className="row g-4 mt-3">
+                        <ReviewCard></ReviewCard>
+                        <ReviewCard></ReviewCard>
+                        <ReviewCard></ReviewCard>
+                        <ReviewCard></ReviewCard>
                     </div>
                 </div>
             </section>
