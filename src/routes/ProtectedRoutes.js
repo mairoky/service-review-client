@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { FallingLines } from 'react-loader-spinner';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const ProtectedRoutes = ({ children }) => {
 
