@@ -13,14 +13,17 @@ const ServiceCard = ({ service }) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
+                        {
+                            description.length > 100 ?
+                                description.slice(0, 99) + "..."
+                                : description
+                        }
                     </Card.Text>
                     <div className='d-flex justify-content-between'>
                         <p class="fw-semibold">Price: ${price}</p>
                         <p>Raring: {rating}</p>
                     </div>
-                    <Link to={`/service/${_id}`}>
+                    <Link to={`/services/${_id}`}>
                         <Button variant="dark">Read Details</Button>
                     </Link>
                 </Card.Body>

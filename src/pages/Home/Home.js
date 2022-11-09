@@ -30,7 +30,7 @@ const Home = () => {
                         {/* <ServiceCard></ServiceCard> */}
                     </div>
                     <div className="text-center mt-3">
-                        <Link>
+                        <Link to="/services">
                             <Button variant="outline-dark">See All</Button>
                         </Link>
                     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import './Service.css';
 
 const Service = () => {
@@ -34,8 +34,17 @@ const Service = () => {
                     </div>
                 </div>
             </section>
-            <section className='service-review mt-4'>
-                <div className="container"></div>
+            <section className='service-review my-5'>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="d-flex justify-content-between">
+                                <h2>Users Review</h2>
+                                <Link><button className='btn btn-outline-dark'>Add Your Review</button></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     );
