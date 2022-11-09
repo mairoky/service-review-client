@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import './Home.css';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
+import About from '../../components/About/About';
+import Features from '../../components/Features/Features';
+import Testimonials from '../../components/Testimonials/Testimonials';
 
 const Home = () => {
     return (
@@ -24,7 +27,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="row g-3">
-                        <ServiceCard></ServiceCard>
+                        {/* <ServiceCard></ServiceCard> */}
                     </div>
                     <div className="text-center mt-3">
                         <Link>
@@ -33,42 +36,9 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="about-us my-5">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-8 m-auto">
-                            <div className="section-heading text-center">
-                                <h2>About</h2>
-                                <p>A One-Stop Solution For All Your Visa Needs</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section className="features my-5">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-8 m-auto">
-                            <div className="section-heading text-center">
-                                <h2>Features</h2>
-                                <p>A One-Stop Solution For All Your Visa Needs</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section className="testimonial my-5">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-8 m-auto">
-                            <div className="section-heading text-center">
-                                <h2>Testimonial</h2>
-                                <p>A One-Stop Solution For All Your Visa Needs</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <About></About>
+            <Features></Features>
+            <Testimonials></Testimonials>
         </main>
     );
 };
