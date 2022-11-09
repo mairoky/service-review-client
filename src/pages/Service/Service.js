@@ -1,20 +1,64 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import './Service.css';
 import { AuthContext } from '../../context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Service = () => {
+    const [userReviews, setUserReviews] = useState([]);
     const service = useLoaderData();
     const { user } = useContext(AuthContext);
     const { _id, name, image, price, rating, description } = service;
+    // console.log(user);
 
     // Handle Add Review
     const handleAddReview = e => {
+        e.preventDefault();
+        const review_txt = e.target.review.value;
+        const author_email = user?.email || 'null';
+        const author_name = user?.displayName || 'null';
+        const author_image = user?.photoURL || 'null';
+        const createdAt = new Date();
+        const timestamp = Math.floor(new Date().getTime() / 1000);
+        // console.log(reviewTxt, authorEmail);
 
+        const review = {
+            service_id: _id,
+            service_name: name,
+            review_txt,
+            author_email,
+            author_name,
+            author_image,
+            createdAt,
+            timestamp
+        }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Review Post Successfully.');
+                    e.target.reset();
+                }
+            })
+            .catch(err => console.error(err))
     }
+
+    // Load All user reviews
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setUserReviews(data))
+    }, [userReviews])
 
     return (
         <div>
@@ -51,33 +95,34 @@ const Service = () => {
                                 !user?.uid ?
                                     <Link to="/login"><h5 className='m-0'>Please login to add a Review</h5></Link>
                                     : <>
-                                        <form onSubmit={handleAddReview}>
-                                            <div className="card-body">
-                                                <div className="form-group mt-2">
-                                                    <FloatingLabel controlId="floatingTextarea2" label="Leave your review here">
-                                                        <Form.Control
-                                                            as="textarea"
-                                                            placeholder="Leave your review here"
-                                                            name="review"
-                                                            style={{ height: '100px' }}
-                                                        />
-                                                    </FloatingLabel>
+                                        <div className="card">
+                                            <form onSubmit={handleAddReview}>
+                                                <div className="card-body">
+                                                    <div className="form-group mt-2">
+                                                        <FloatingLabel controlId="floatingTextarea2" label="Leave your review here">
+                                                            <Form.Control
+                                                                as="textarea"
+                                                                placeholder="Leave your review here"
+                                                                name="review"
+                                                                style={{ height: '100px' }}
+                                                            />
+                                                        </FloatingLabel>
+                                                    </div>
+                                                    <div className="text-end">
+                                                        <button type="submit" className="btn btn-dark mt-3">Add Your Review</button>
+                                                    </div>
                                                 </div>
-                                                <div className="text-end">
-                                                    <button type="submit" className="btn btn-dark mt-3">Add Your Review</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </>
                             }
                         </div>
                     </div>
                     <h2 className='mt-4'>All Users Review</h2>
                     <div className="row g-4 mt-3">
-                        <ReviewCard></ReviewCard>
-                        <ReviewCard></ReviewCard>
-                        <ReviewCard></ReviewCard>
-                        <ReviewCard></ReviewCard>
+                        {
+                            userReviews.map(userReview => <ReviewCard key={userReview._id} userReview={userReview}></ReviewCard>)
+                        }
                     </div>
                 </div>
             </section>
