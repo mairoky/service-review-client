@@ -58,6 +58,7 @@ const Service = () => {
                                                         <Form.Control
                                                             as="textarea"
                                                             placeholder="Leave your review here"
+                                                            name="review"
                                                             style={{ height: '100px' }}
                                                         />
                                                     </FloatingLabel>
