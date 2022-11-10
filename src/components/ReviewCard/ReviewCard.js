@@ -3,8 +3,8 @@ import { FaStar } from 'react-icons/fa';
 import './ReviewCard.css';
 
 const ReviewCard = ({ userReview }) => {
-    console.log(userReview);
-    const { _id, service_id, service_name, review_txt, author_email, author_name, author_image, createdAt, timestamp } = userReview;
+    // console.log(userReview);
+    const { review_txt, author_name, author_image } = userReview;
     return (
         <div className='col-lg-6 col-md-6 col-12'>
             <div className="review-item bg-white rounded p-3">
