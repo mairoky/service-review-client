@@ -6,8 +6,10 @@ import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
 import './Service.css';
+import useTitle from '../../hooks/useTitle';
 
 const Service = () => {
+    useTitle('Service');
     const [userReviews, setUserReviews] = useState([]);
     const service = useLoaderData();
     const { user } = useContext(AuthContext);

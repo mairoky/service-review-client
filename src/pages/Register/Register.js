@@ -5,10 +5,12 @@ import { AuthContext } from '../../context/AuthProvider';
 import { FaGoogle } from "react-icons/fa";
 import toast from 'react-hot-toast';
 import './Register.css';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
+    useTitle('Register');
     // Get Auth Context Data
-    const { createUser, socialLogin, updateUserProfile } = useContext(AuthContext);
+    const { createUser, socialLogin, updateUserProfile, setLoading } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -37,6 +39,9 @@ const Register = () => {
             .catch(err => {
                 console.error(err);
                 toast.error(err.message);
+            })
+            .finally(() => {
+                setLoading(false);
             })
     }
 

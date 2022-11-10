@@ -18,9 +18,9 @@ const Header = () => {
     }
 
     return (
-        <header className='py-3'>
+        <header className='py-3 bg-white'>
             {['lg'].map((expand) => (
-                <Navbar key={expand} expand={expand}>
+                <Navbar key={expand} expand={expand} variant="light" bg="light">
                     <Container>
                         <Navbar.Brand as={Link} to="/">
                             EMIKO

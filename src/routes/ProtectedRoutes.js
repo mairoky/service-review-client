@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
-import { FallingLines } from 'react-loader-spinner';
+import Loader from '../components/Loader/Loader';
 
 const ProtectedRoutes = ({ children }) => {
 
@@ -9,12 +9,7 @@ const ProtectedRoutes = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <FallingLines
-            color="#4fa94d"
-            width="100"
-            visible={true}
-            ariaLabel='falling-lines-loading'
-        />
+        return <Loader></Loader>
     }
 
     if (!user) {

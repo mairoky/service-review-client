@@ -5,9 +5,11 @@ import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../context/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import './Login.css';
+import useTitle from '../../hooks/useTitle';
 
 
 const Login = () => {
+    useTitle('Login')
     // Get Auth Context Data
     const { loginUser, socialLogin, setLoading } = useContext(AuthContext);
 

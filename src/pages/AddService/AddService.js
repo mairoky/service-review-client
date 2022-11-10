@@ -4,8 +4,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
+    useTitle('Add Service');
     const { user } = useContext(AuthContext);
     // Handle Add Service
     const handleAddService = e => {
