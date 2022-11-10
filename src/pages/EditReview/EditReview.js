@@ -22,7 +22,8 @@ const EditReview = () => {
         fetch(`https://service-review-server-three.vercel.app/reviews/${rev._id}`, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(review)
         })

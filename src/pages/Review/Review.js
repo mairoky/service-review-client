@@ -7,23 +7,35 @@ import useTitle from '../../hooks/useTitle';
 const Review = () => {
     useTitle('Reviews');
     const [reviews, setReviews] = useState([]);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`https://service-review-server-three.vercel.app/reviews?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`https://service-review-server-three.vercel.app/reviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
             .then(data => {
                 // console.log(data);
                 setReviews(data)
             })
-    }, [user?.email])
+    }, [user?.email, logOut])
 
     //Handle Delete Review
     const handleDelete = id => {
         const agree = window.confirm("Are you sure, you want to delete?");
         if (agree) {
             fetch(`https://service-review-server-three.vercel.app/reviews/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
