@@ -67,7 +67,7 @@ const Service = () => {
         <div>
             <section className='service-details mt-3'>
                 <div className="container">
-                    <div className="row">
+                    <div className="row g-3">
                         <div className="col-lg-4 col-md-6">
                             <div className='service-img text-center bg-white py-5 rounded'>
                                 <img className='img-fluid rounded' src={image} alt="service name" />
