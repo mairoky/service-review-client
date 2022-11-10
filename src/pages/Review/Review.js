@@ -10,7 +10,7 @@ const Review = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`https://service-review-server-three.vercel.app/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -22,7 +22,7 @@ const Review = () => {
     const handleDelete = id => {
         const agree = window.confirm("Are you sure, you want to delete?");
         if (agree) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://service-review-server-three.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

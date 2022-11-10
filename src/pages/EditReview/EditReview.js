@@ -19,7 +19,7 @@ const EditReview = () => {
 
     const handleUpdateReview = e => {
         e.preventDefault();
-        fetch(`http://localhost:5000/reviews/${rev._id}`, {
+        fetch(`https://service-review-server-three.vercel.app/reviews/${rev._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

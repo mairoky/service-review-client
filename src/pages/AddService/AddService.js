@@ -35,7 +35,7 @@ const AddService = () => {
         }
 
         // send data to server & store in the db
-        fetch('http://localhost:5000/services', {
+        fetch('https://service-review-server-three.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

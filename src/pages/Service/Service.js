@@ -38,7 +38,7 @@ const Service = () => {
             timestamp
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://service-review-server-three.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const Service = () => {
 
     // Load All user reviews
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://service-review-server-three.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setUserReviews(data))
     }, [userReviews, _id])
