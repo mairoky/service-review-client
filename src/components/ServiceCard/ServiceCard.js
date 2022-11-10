@@ -20,7 +20,7 @@ const ServiceCard = ({ service }) => {
                         }
                     </Card.Text>
                     <div className='d-flex justify-content-between'>
-                        <p class="fw-semibold">Price: ${price}</p>
+                        <p className="fw-semibold">Price: ${price}</p>
                         <p>Raring: {rating}</p>
                     </div>
                     <Link to={`/services/${_id}`}>

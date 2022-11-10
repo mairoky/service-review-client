@@ -1,14 +1,15 @@
 import React from 'react';
 import HeroSlider from '../../components/HeroSlider/HeroSlider';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import './Home.css';
 import ServiceCard from '../../components/ServiceCard/ServiceCard';
 import About from '../../components/About/About';
 import Features from '../../components/Features/Features';
-import Testimonials from '../../components/Testimonials/Testimonials';
+import './Home.css';
 
 const Home = () => {
+    const services = useLoaderData();
+
     return (
         <main>
             <section className='hero-slider'>
@@ -27,7 +28,9 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="row g-3">
-                        {/* <ServiceCard></ServiceCard> */}
+                        {
+                            services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                        }
                     </div>
                     <div className="text-center mt-3">
                         <Link to="/services">
@@ -38,7 +41,6 @@ const Home = () => {
             </section>
             <About></About>
             <Features></Features>
-            <Testimonials></Testimonials>
         </main>
     );
 };

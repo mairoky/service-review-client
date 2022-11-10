@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import AddService from "../pages/AddService/AddService";
 import Blog from "../pages/Blog/Blog";
+import EditReview from "../pages/EditReview/EditReview";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
@@ -18,7 +19,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/home-services')
             },
             {
                 path: '/services',
@@ -49,6 +51,11 @@ export const router = createBrowserRouter([
             {
                 path: '/add-service',
                 element: <ProtectedRoutes><AddService></AddService></ProtectedRoutes>
+            },
+            {
+                path: '/edit-review/:id',
+                element: <ProtectedRoutes><EditReview></EditReview></ProtectedRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/edit-review/${params.id}`)
             }
         ]
     },

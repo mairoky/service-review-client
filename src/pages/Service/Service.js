@@ -3,9 +3,9 @@ import { Link, useLoaderData } from 'react-router-dom';
 import ReviewCard from '../../components/ReviewCard/ReviewCard';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import './Service.css';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
+import './Service.css';
 
 const Service = () => {
     const [userReviews, setUserReviews] = useState([]);
@@ -55,10 +55,10 @@ const Service = () => {
 
     // Load All user reviews
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setUserReviews(data))
-    }, [userReviews])
+    }, [userReviews, _id])
 
     return (
         <div>
@@ -118,11 +118,20 @@ const Service = () => {
                             }
                         </div>
                     </div>
-                    <h2 className='mt-4'>All Users Review</h2>
+                    <h3 className='mt-4'>All Users Review</h3>
                     <div className="row g-4 mt-3">
                         {
-                            userReviews.map(userReview => <ReviewCard key={userReview._id} userReview={userReview}></ReviewCard>)
+                            userReviews.length === 0 ?
+                                <h5 className='text-center'>No Reviews Available!</h5>
+                                :
+                                <>
+                                    {
+                                        userReviews.map(userReview => <ReviewCard key={userReview._id} userReview={userReview}></ReviewCard>)
+                                    }
+                                </>
+
                         }
+
                     </div>
                 </div>
             </section>
